@@ -1,0 +1,173 @@
+﻿@model ShoeUpsertVM;
+
+<div class="container d-flex align-items-baseline mt-4">
+    <h2>Create Shoe</h2>
+    <a
+        asp-action="Index"
+        class="btn btn-outline-dark fw-bold text-uppercase d-flex gap-1 px-4 ms-auto"
+    >
+        <i class="bi bi-arrow-return-left"></i>
+        <span>Back to List</span>
+    </a>
+</div>
+
+<div class="container mt-3 border shadow p-3">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <form class="" asp-action="Upsert" method="post" enctype="multipart/form-data">
+                <input asp-for="Shoe.Id" hidden type="text"/>
+                <input asp-for="Shoe.ImageFileName" hidden type="text"/>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label
+                                class="from-label"
+                                asp-for="Shoe.Name">
+                           </label>
+                            <input 
+                                type="text" 
+                                class="form-control"  
+                                placeholder="Shoe Name"
+                                autocomplete="off"
+                                asp-for="Shoe.Name"
+                            >
+                            <span asp-validation-for="Shoe.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Shoe.ImageFileName">Image</label>
+                            <input 
+                                class="form-control" 
+                                type="file" 
+                                asp-for="Shoe.ImageFileName" 
+                                name="file"
+                                autocomplete="off" 
+                                
+                                />
+                            <span class="text-danger" asp-validation-for="Shoe.Name"></span>
+                            
+                            @*Add image preview here*@
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="Shoe.BrandId">Brand</label>
+                            <select 
+                                class="form-select"
+                                asp-for="Shoe.BrandId"
+                                asp-items="@Model.BrandList" 
+                                
+                            >
+                                <option disabled selected>--Select Brand--</option>
+                            </select>
+                            <span asp-validation-for="Shoe.BrandId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" >Category</label>
+                            <select 
+                                asp-for="SelectedCategory"
+                                asp-items="@Model.CategoryList"
+                                class="form-select"
+                                multiple
+                            >
+                                <option 
+                                    disabled 
+                                    selected
+                                >
+                                --Select Category--
+                                </option>
+                            </select>
+                            <span 
+                                asp-validation-for="SelectedCategory" 
+                                class="text-danger">
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label 
+                                asp-for="Shoe.ShortDescription"
+                                class="form-label"
+                            ></label>
+                            <input 
+                                asp-for="Shoe.ShortDescription"
+                                class="form-control"
+                                autocomplete="off" 
+                                />
+                            <span class="text-danger" asp-validation-for="Shoe.ShortDescription"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label 
+                                asp-for="Shoe.FullDescription"
+                                class="form-label">
+                            </label>
+                            <textarea 
+                                asp-for="Shoe.FullDescription"
+                                class="form-control"></textarea>                      
+                            <span class="text-danger" asp-validation-for="Shoe.FullDescription"></span>
+                        </div>
+                    </div>
+
+                    @*second column*@
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label asp-for="Shoe.Color" class="form-label"></label>
+                            <input 
+                                class="form-control"
+                                asp-for="Shoe.Color"
+                                type="text" 
+                                autocomplete="off" />
+                            <span class="text-danger" asp-validation-for="Shoe.Color"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Shoe.Size" class="form-label"></label>
+                            <input class="form-control"
+                                   asp-for="Shoe.Size"
+                                   type="number"
+                                   step="any"
+                                   autocomplete="off" />
+                            <span class="text-danger" asp-validation-for="Shoe.Size"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Shoe.Price" class="form-label"></label>
+                            <input class="form-control"
+                                   asp-for="Shoe.Price"
+                                   type="number"
+                                   step="any"
+                                   autocomplete="off" />
+                            <span class="text-danger" asp-validation-for="Shoe.Price"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <select asp-for="Shoe.Gender"
+                                    asp-items="@Model.GenderList"
+                                    class="form-select">
+                                <option disabled
+                                        selected>
+                                    --Select Gender--
+                                </option>
+                            </select>
+                            <span asp-validation-for="Shoe.Gender"
+                                  class="text-danger">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <button 
+                    type="submit"
+                    class="btn btn-secondary px-3 text-uppercase fw-bold d-flex gap-2"
+                >
+                    <i class="bi bi-floppy-fill"></i>
+                    <span>Save</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@*@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}*@

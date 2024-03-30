@@ -1,0 +1,30 @@
+﻿<div class="container d-flex justify-content-between align-items-baseline mt-4 mb-3">
+    <h1>Shoes</h1>
+    <a class="btn btn-outline-dark px-4 d-flex gap-2"
+        asp-action="Upsert"
+    >
+        <i class="bi bi-building-add"></i>
+        <span class="text-uppercase fw-bold">Create</span>
+    </a>
+</div>
+<div class="container border">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Name</th>
+                    <th>Price</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th style="width: 25%;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="shoe-table-body"></tbody>
+        </table>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/shoe.js" type="module" asp-append-version="true"></script>
+}

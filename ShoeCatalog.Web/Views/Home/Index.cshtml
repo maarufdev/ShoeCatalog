@@ -1,0 +1,86 @@
+﻿@*@model List<ShoeCardVM>*@
+@model HomeVM;
+
+@{
+    string myTitle()
+    {
+        return "This is just a title";
+    }
+}
+<div class="">
+    <div id="carouselExampleDark" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            
+            @for(int i = 1; i <= Model.Carousels.Count; i++)
+            {
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="@i" aria-label="Slide @(i+1)"></button>
+            }
+
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item m-0 active" data-bs-interval="2000">
+                <div class="row m-0 carousel-row__container">
+                    <div class="col-12 carousel-col__container">
+                        <div class="carousel-img__container">
+                            <img src="~/images/static/Hero Image.webp" class="c-image" alt="...">
+                        </div>
+                   </div>
+               </div>
+            </div>
+            @foreach(var carousel in Model.Carousels)
+            {
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class="row m-0 carousel-row__container">
+                        <div class="col-12 col-md-8 carousel-col__container">
+                            <div class="carousel-img__container">
+                                <img src="~/images/@carousel.Image" class="c-image" alt="...">
+                            </div>
+                        </div>
+                        <div class="d-md-flex col-md-4 carousel-col__container carousel-caption__container">
+                            <div class="box-container">
+                                <h5>@carousel.Name</h5>
+                                <p>Some representative placeholder content for the second slide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <h1 class="text-center">TRENDING NOW!</h1>
+    <div class="row">
+        @foreach (var item in Model.Cards)
+        {
+            <a class="col-xs-12 col-sm-6 col-md-4 col-lg-3 card-container"
+                asp-action="Details"
+                asp-controller="Shoe"
+                asp-route-id="@item.ShoeId"
+            >
+                <div class="card">
+                    <div class="card-img__container">
+                        <img src="~/images/@item.Image" class="card-item-img" alt="...">
+                    </div>
+                    <p class="card-text shoe-brand">@item.Brand</p>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text shoe-price">₱@item.Price</p>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+

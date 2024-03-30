@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7F61A03-7B65-43E9-9930-2EFEF4541310}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoeCatalog.Domain", "ShoeCatalog.DataAccess\ShoeCatalog.Domain.csproj", "{568DBC32-5303-42AD-A66B-2C8D1A230578}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoeCatalog.Repositories", "ShoeCatalog.Repositories\ShoeCatalog.Repositories.csproj", "{DD8DF674-02F5-4287-9B71-DA2F903ACF38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoeCatalog.API", "ShoeCatalog.API\ShoeCatalog.API.csproj", "{F5BB81FD-CAD4-4AC7-A368-D3769F621754}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoeCatalog.Services", "ShoeCatalog.Services\ShoeCatalog.Services.csproj", "{4FF5BDEE-1A29-4728-AB7A-9B6A080084EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoeCatalog.Helpers", "ShoeCatalog.Helpers\ShoeCatalog.Helpers.csproj", "{B8A93799-BFEA-49B7-8ADE-1D2962861777}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoeCatalog.Web", "ShoeCatalog.Web\ShoeCatalog.Web.csproj", "{AD2E6597-6601-4257-B759-8AED4644C7E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{568DBC32-5303-42AD-A66B-2C8D1A230578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568DBC32-5303-42AD-A66B-2C8D1A230578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568DBC32-5303-42AD-A66B-2C8D1A230578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568DBC32-5303-42AD-A66B-2C8D1A230578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8DF674-02F5-4287-9B71-DA2F903ACF38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8DF674-02F5-4287-9B71-DA2F903ACF38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8DF674-02F5-4287-9B71-DA2F903ACF38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8DF674-02F5-4287-9B71-DA2F903ACF38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BB81FD-CAD4-4AC7-A368-D3769F621754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BB81FD-CAD4-4AC7-A368-D3769F621754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BB81FD-CAD4-4AC7-A368-D3769F621754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BB81FD-CAD4-4AC7-A368-D3769F621754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF5BDEE-1A29-4728-AB7A-9B6A080084EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF5BDEE-1A29-4728-AB7A-9B6A080084EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF5BDEE-1A29-4728-AB7A-9B6A080084EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF5BDEE-1A29-4728-AB7A-9B6A080084EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A93799-BFEA-49B7-8ADE-1D2962861777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A93799-BFEA-49B7-8ADE-1D2962861777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A93799-BFEA-49B7-8ADE-1D2962861777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A93799-BFEA-49B7-8ADE-1D2962861777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2E6597-6601-4257-B759-8AED4644C7E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2E6597-6601-4257-B759-8AED4644C7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2E6597-6601-4257-B759-8AED4644C7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2E6597-6601-4257-B759-8AED4644C7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3A1CA03-AE32-407A-8D7B-B63EB3B867DA}
+	EndGlobalSection
+EndGlobal

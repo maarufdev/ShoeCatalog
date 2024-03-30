@@ -1,0 +1,79 @@
+
+@*Header part*@
+<div class="container d-flex justify-content-between align-items-baseline mt-4 mb-3">
+    <h1>Categories</h1>
+    <button 
+        id="create-category-button"
+        type="button"
+            class="btn btn-outline-dark px-4 d-flex gap-2">
+        <i class="bi bi-building-add"></i>
+        <span class="text-uppercase fw-bold">Create</span>
+    </button>
+</div>
+
+<div class="container border shadow p-3">
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Number of items</th>
+                <th class="col-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-category-body"></tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<div class="modal fade"
+     id="modalCategory"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="modalCategoryLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCategoryLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Category</label>
+                    <input class="form-control" id="category-name" name="name" tabindex="-1" />
+                    <span id="brand-error" class="text-warning"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary px-3 d-flex gap-2 fw-bold text-uppercase" id="upsert-button">
+                    <i class="bi bi-floppy-fill"></i>
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/category.js" type="module" asp-append-version="true"></script>
+}

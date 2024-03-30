@@ -1,0 +1,23 @@
+﻿<div class="container mt-3">
+    <div class="shoe-list-container row justify-content-between align-items-center mb-3">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m-0">
+            <h1 class="header-text m-0">Shoe List</h1>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex align-items-center gap-2 m-0">
+            <input class="form-control rounded-0" id="search-box" placeholder="Search what you're style.." type="text" />
+            <button class="btn btn-outline-dark d-flex fw-bold px-3 gap-1" id="btn-search">
+                <i class="bi bi-search"></i><span>Find</span>
+            </button>
+            <button class="btn btn-outline-dark fw-bold px-3 d-flex gap-1" id="btn-refresh">
+                <i class="bi bi-arrow-clockwise"></i>
+                <span>Refresh</span>
+            </button>
+        </div>
+    </div>
+    <hr class="border-2"/>
+    <div class="row mt-0" id="card-row-container"></div>
+</div>
+
+@section Scripts{
+    <script src="~/js/shoeList.js" type="module" asp-append-version="true"></script>
+}
