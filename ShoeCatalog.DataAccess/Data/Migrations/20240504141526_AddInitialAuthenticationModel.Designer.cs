@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoeCatalog.DataModels.Data;
 
 #nullable disable
 
-namespace ShoeCatalog.DataAccess.Data.Migrations
+namespace ShoeCatalog.Domain.Data.Migrations
 {
     [DbContext(typeof(ShoeDbContext))]
-    partial class ShoeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240504141526_AddInitialAuthenticationModel")]
+    partial class AddInitialAuthenticationModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

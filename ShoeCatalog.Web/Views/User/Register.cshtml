@@ -1,0 +1,70 @@
+﻿@model ShoeCatalog.Domain.ViewModels.UserVM.RegisterVM
+
+
+<div class="row justify-content-center align-items-center p-3 m-0" style="height: 80vh;">
+    <div class="col-md-6 shadow p-5">
+        <h2 class="text-center">@ViewData["Title"]</h2>
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-2">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" type="text" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="MiddleName" class="control-label"></label>
+                <input asp-for="MiddleName" type="text" class="form-control" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" type="text" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" type="date" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" id="password-input" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-2 d-flex gap-2">
+                <label class="control-label">Show Password</label>
+                <input id="show-password" type="checkbox" class="form-check p-2" />
+            </div>
+            <div class="my-3 d-flex justify-content-between px-2">
+                <input type="submit" value="Login" class="btn btn-primary" />
+                <a class="mx-2" asp-action="ForgotPassword" asp-controller="User">Forgot Password</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const showPasswordBtn = document.getElementById('show-password');
+    const passwordText = document.getElementById("password-input");
+
+    showPasswordBtn.onclick = () => {
+        if (passwordText.type === "password") {
+            passwordText.type = "text";
+        } else {
+            passwordText.type = "password";
+        }
+    }
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

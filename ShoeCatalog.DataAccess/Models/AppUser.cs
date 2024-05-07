@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,12 +8,8 @@ using System.Threading.Tasks;
 
 namespace ShoeCatalog.Domain.Models
 {
-    public class AppUser
+    public class AppUser : IdentityUser
     {
-        public AppUser()
-        {
-            
-        }
 
         [Required]
         public string? FirstName { get; set; }
@@ -29,9 +26,9 @@ namespace ShoeCatalog.Domain.Models
         public DateTime DateOfBirth { get; set; }
         
         public string? CreatedBy { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; set; }
         public string? UpdatedBy { get; set; }
-        public DateTime UpdatedOn { get; set; }
-        public bool IsActive { get; set; } = true;
+        public DateTime? UpdatedOn { get; set; }
+        public bool IsActive { get; set; }
     }
 }
