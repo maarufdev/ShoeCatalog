@@ -4,8 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 #credentials
-*/appsettings.json
-*/appsettings.Development.json
+./ShoeCatalog.Web/appsettings.json
+./ShoeCatalog.Web/appsettings.Development.json
 
 
 # User-specific files
