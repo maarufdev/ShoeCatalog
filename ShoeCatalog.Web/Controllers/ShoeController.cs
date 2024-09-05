@@ -62,7 +62,7 @@ namespace ShoeCatalog.Web.Controllers
         {
             ShoeUpsertVM shoe = new();
 
-            //var brands = await _unitOfWork.Brand.GetAllAsync();
+            //var brands = await _unitOfWork.BrandRepository.GetAllAsync();
             var brandsResponse = await _brandService.GetAllAsync();
             var brands = brandsResponse.Model;
 
@@ -72,7 +72,7 @@ namespace ShoeCatalog.Web.Controllers
                 Value = x.Id
             });
 
-            //var categories = await _unitOfWork.Category.GetAllAsync();
+            //var categories = await _unitOfWork.CategoryRepository.GetAllAsync();
             var categoryResponse = await _categoryService.GetAllAsync();
             var categories = categoryResponse.Model;
 
@@ -86,7 +86,7 @@ namespace ShoeCatalog.Web.Controllers
             }
             else
             {
-                shoe.Shoe = await _unitOfWork.Shoe
+                shoe.Shoe = await _unitOfWork.ShoeRepository
                             .GetFirstOrDefaultAsync(x => x.Id == id, 
                                                     includeProperties: "ShoeCategories", 
                                                     tracked: false);
@@ -151,7 +151,7 @@ namespace ShoeCatalog.Web.Controllers
                         shoeVM.Shoe.ImageFileName = uploadedFile;
                     }
 
-                    var categories = await _unitOfWork.Category.GetAllAsync(x => shoeVM.SelectedCategory
+                    var categories = await _unitOfWork.CategoryRepository.GetAllAsync(x => shoeVM.SelectedCategory
                                                                                  .Contains(x.Id));
 
                     var shoeCategoryToAdd = categories
@@ -160,8 +160,8 @@ namespace ShoeCatalog.Web.Controllers
 
                     shoeVM.Shoe.ShoeCategories = shoeCategoryToAdd;
 
-                    //await _unitOfWork.Shoe.AddAsync(shoeVM.Shoe);
-                    await _unitOfWork.Shoe.AddShoeAsync(shoeVM.Shoe);
+                    //await _unitOfWork.ShoeRepository.AddAsync(shoeVM.ShoeRepository);
+                    await _unitOfWork.ShoeRepository.AddShoeAsync(shoeVM.Shoe);
 
                     var result = await _unitOfWork.SaveAsync();
 
@@ -174,7 +174,7 @@ namespace ShoeCatalog.Web.Controllers
                 {
                     
                     // get existing shoe that needs to be updated
-                    var existingShoe = await _unitOfWork.Shoe
+                    var existingShoe = await _unitOfWork.ShoeRepository
                                        .GetFirstOrDefaultAsync(x => x.Id == shoeVM.Shoe.Id, 
                                                                includeProperties: "ShoeCategories", 
                                                                tracked: true);
@@ -186,7 +186,7 @@ namespace ShoeCatalog.Web.Controllers
                     if (newCategoryIds.Any())
                     {
                         // get new categories
-                        var newCategories = await _unitOfWork.Category.GetAllAsync(c => newCategoryIds.Contains(c.Id!),
+                        var newCategories = await _unitOfWork.CategoryRepository.GetAllAsync(c => newCategoryIds.Contains(c.Id!),
                                                                                         tracked: false);
 
                         // perform add the new categories.
@@ -235,7 +235,7 @@ namespace ShoeCatalog.Web.Controllers
                         existingShoe.ImageFileName = uploadedFile;
                     }
 
-                    await _unitOfWork.Shoe.Update(existingShoe);
+                    await _unitOfWork.ShoeRepository.Update(existingShoe);
 
                     var result = await _unitOfWork.SaveAsync();
 
@@ -279,7 +279,7 @@ namespace ShoeCatalog.Web.Controllers
                 return Ok("Successfully deleted");
             }
 
-            return NotFound("Shoe was not found");
+            return NotFound("ShoeRepository was not found");
         }
 
         [HttpGet]

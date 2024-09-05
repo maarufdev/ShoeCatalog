@@ -1,0 +1,56 @@
+﻿
+
+#cart-table {
+
+}
+#cart-table input[type="checkbox"] {
+    cursor: pointer;
+}
+
+#cart-table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+#cart-table .th-checkbox-col {
+    width: 120px;
+    cursor: pointer;
+}
+
+#cart-table .th-checkbox-col > div {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    user-select: none;
+    pointer-events: none;
+}
+
+#cart-table thead tr .th-image-col {   
+    width: 50px;
+}
+
+#cart-table .td-checkbox {
+    text-align: center;
+}
+
+#cart-table .th-quantity-col {
+    width: 100px;
+}
+
+#cart-table #table-cart-body tr .td-action button {
+    margin-left: 10px;
+}
+
+#cart-table > tbody > tr td .td-img-container {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+}
+
+#cart-table > tbody > tr > td .td-img-container > img {
+    width: 100%;
+    height: 100%;
+}
+
+#cart-table > tbody > tr:nth-child(odd) > td > .td-img-container > img {
+    mix-blend-mode: multiply;
+}

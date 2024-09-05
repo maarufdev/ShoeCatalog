@@ -10,7 +10,6 @@ using ShoeCatalog.Domain.Models;
 
 namespace ShoeCatalog.DataModels.Data
 {
-    //public class ShoeDbContext : DbContext
     public class ShoeDbContext : IdentityDbContext<AppUser>
     {
         public ShoeDbContext(DbContextOptions<ShoeDbContext> options): base(options)
@@ -23,6 +22,8 @@ namespace ShoeCatalog.DataModels.Data
         public DbSet<Brand> Brands { get; set; }
         public DbSet<ShoeCategory> ShoeCategories { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

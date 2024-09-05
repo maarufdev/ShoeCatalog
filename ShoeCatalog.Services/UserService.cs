@@ -28,7 +28,7 @@ namespace ShoeCatalog.Services
 
                 if (isPasswordValid)
                 {
-                    var checkSigningIn = await _signInManager.PasswordSignInAsync(user, login.Password, false, false);
+                    var checkSigningIn = await _signInManager.PasswordSignInAsync(user, login.Password, true, false);
                     isSignInSuccess = checkSigningIn.Succeeded;
                 }
                 else
@@ -69,6 +69,11 @@ namespace ShoeCatalog.Services
             }
 
             return isRegistrationSuccess;
+        }
+
+        public async Task SignOut()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

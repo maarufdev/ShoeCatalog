@@ -89,7 +89,7 @@ namespace ShoeCatalog.Web.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
 
-            return BadRequest("Brand Id is not found");
+            return BadRequest("BrandRepository Id is not found");
         }
 
         [HttpDelete]

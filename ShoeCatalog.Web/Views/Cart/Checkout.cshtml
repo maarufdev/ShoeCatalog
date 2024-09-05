@@ -1,0 +1,67 @@
+﻿@model ShoeCatalog.Domain.ViewModels.Cart.CartVM
+
+<div class="container pt-2">
+       @if(Model.CartUpsertVM != null)
+        {
+       <form class="form shadow m-0 p-3" method="POST" asp-controller="Cart" asp-action="Checkout">
+            <input class="form-control" hidden asp-for="CartUpsertVM.Id" />
+            <input class="form-control" hidden asp-for="CartUpsertVM.ShoeId" />
+
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h2>Checkout Confirmation</h2>
+                <button type="submit" class="btn btn-secondary px-4 d-flex gap-2 fw-bold text-uppercase">
+                    <i class="bi bi-floppy-fill"></i>
+                    <span>Checkout</span>
+                </button>
+            </div>
+            <div class="row flex-direction-row m-0 p-0">
+                <div class="col-6 p-2">
+                    <div class="mb-3">
+                        <label>Item Name</label>
+                        <input class="form-control" readonly asp-for="CartUpsertVM.Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Brand</label>
+                        <input class="form-control" readonly asp-for="CartUpsertVM.Brand" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Price</label>
+                        <input class="form-control" readonly type="number" asp-for="CartUpsertVM.Price" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Quantity</label>
+                        <input class="form-control" readonly type="number" asp-for="CartUpsertVM.Quantity" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Total</label>
+                        <input class="form-control" readonly type="number" asp-for="CartUpsertVM.Total" />
+                    </div>
+                
+                </div>
+
+                <div class="col-6 p-2">
+                    <div class="mb-3">
+                        <label>Building</label>
+                        <input class="form-control" asp-for="User.DeliveryAddress.Building" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Street</label>
+                        <input class="form-control" asp-for="User.DeliveryAddress.StreetAddress" />
+                    </div>
+                    <div class="mb-3">
+                        <label>City</label>
+                        <input class="form-control" asp-for="User.DeliveryAddress.City" />
+                    </div>
+                    <div class="mb-3">
+                        <label>State</label>
+                        <input class="form-control" asp-for="User.DeliveryAddress.State" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Contact Number</label>
+                        <input class="form-control" asp-for="User.ContactNumber" />
+                    </div>
+                </div>
+            </div>
+        </form>
+       }
+</div>

@@ -18,7 +18,7 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                await _unitOfWork.Category.AddAsync(category);
+                await _unitOfWork.CategoryRepository.AddAsync(category);
                 await _unitOfWork.SaveAsync();
 
                 return new ResponseData<Category>
@@ -41,7 +41,7 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                await _unitOfWork.Category.RemoveAsync(category);
+                await _unitOfWork.CategoryRepository.RemoveAsync(category);
                 await _unitOfWork.SaveAsync();
 
                 return new ResponseData<Category>
@@ -66,7 +66,7 @@ namespace ShoeCatalog.Services
             {
                 return new ResponseData<IEnumerable<Category>>
                 {
-                    Model = await _unitOfWork.Category.GetAllAsync(tracked: false),
+                    Model = await _unitOfWork.CategoryRepository.GetAllAsync(tracked: false),
                 };
 
             } catch(Exception ex)
@@ -86,7 +86,7 @@ namespace ShoeCatalog.Services
             {
                 return new ResponseData<Category>
                 {
-                    Model =  await _unitOfWork.Category.GetFirstOrDefaultAsync(x=> x.Id == id, tracked: false)
+                    Model =  await _unitOfWork.CategoryRepository.GetFirstOrDefaultAsync(x=> x.Id == id, tracked: false)
                 };
 
             } catch(Exception ex)
@@ -102,7 +102,7 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                await _unitOfWork.Category.Update(category);
+                await _unitOfWork.CategoryRepository.Update(category);
                 await _unitOfWork.SaveAsync();
 
                 return new ResponseData<Category>

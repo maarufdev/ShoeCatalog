@@ -11,5 +11,6 @@ namespace ShoeCatalog.Services.Interfaces
     {
         Task<bool> Login(LoginVM login);
         Task<bool> Register(RegisterVM register);
+        Task SignOut();
     }
 }

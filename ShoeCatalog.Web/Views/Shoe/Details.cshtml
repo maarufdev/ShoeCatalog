@@ -14,13 +14,35 @@
 
 <div class="container d-flex justify-content-between align-items-baseline mt-4 mb-3">
     <h1>Details</h1>
-    @if (isAdmin)
+    @if (isSignedIn && isAdmin)
     {
         <a asp-action="Index"
            class="btn btn-outline-dark fw-bold text-uppercase d-flex gap-1 px-4 ms-auto">
             <i class="bi bi-arrow-return-left"></i>
             <span>Back to List</span>
         </a>
+    }
+    else if(isSignedIn && !isAdmin)
+    {
+        <div class="d-flex gap-2">
+           @*  <button 
+                    type="button" 
+                    class="btn btn-outline-dark fw-bold text-uppercase d-flex gap-1 px-4 ms-auto" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#addCartModal"
+                    id="add-cart-btn"
+            > *@
+                <button type="button"
+                        class="btn btn-outline-dark fw-bold text-uppercase d-flex gap-1 px-4 ms-auto"
+                        id="add-cart-btn">
+                Add to cart
+            </button>
+            <a asp-action="ShoeList"
+               class="btn btn-outline-dark fw-bold text-uppercase d-flex gap-1 px-4 ms-auto">
+                <i class="bi bi-arrow-return-left"></i>
+                <span>Back to List</span>
+            </a>
+        </div>
     }
     else
     {
@@ -79,3 +101,60 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade"
+     id="addCartModal"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="addCartModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addCartModalLabel">Cart</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Shoe</label>
+                    <input class="form-control" disabled id="cart-item-name" tabindex="-1" />
+                    <span id="brand-error" class="text-warning"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Brand</label>
+                    <input class="form-control" disabled id="cart-item-brand" tabindex="-1" />
+                    <span id="brand-error" class="text-warning"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Price</label>
+                    <input class="form-control" disabled id="cart-item-price" tabindex="-1" type="number" />
+                    <span id="brand-error" class="text-warning"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Quantity</label>
+                    <input class="form-control" id="cart-item-quantity" tabindex="-1" type="number"/>
+                    <span id="brand-error" class="text-warning"></span>
+                </div>
+                <div class="mb-3">
+                    <label>Total Price</label>
+                    <input class="form-control" disabled id="cart-item-total-price" tabindex="-1" type="number" />
+                    <span id="brand-error" class="text-warning"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary px-3 d-flex gap-2 fw-bold text-uppercase" id="save-cart">
+                    <i class="bi bi-floppy-fill"></i>
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script type="module" src="~/js/cart/addCart.js" asp-append-version="true"></script>
+}

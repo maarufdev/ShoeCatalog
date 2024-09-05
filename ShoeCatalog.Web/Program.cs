@@ -7,6 +7,7 @@ using ShoeCatalog.Repositories;
 using ShoeCatalog.Repositories.Interfaces;
 using ShoeCatalog.Services;
 using ShoeCatalog.Services.Interfaces;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,19 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = "/User/Logout";
     options.AccessDeniedPath = "/Home/Error";
 });
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:secret_key").Get<string>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowStripe", builder =>
+    {
+        builder.WithOrigins("https://localhost:44368/")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
 
 //builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<IShoeRepository, ShoeRepository>();
@@ -61,6 +75,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors("AllowStripe");
 
 app.MapControllerRoute(
     name: "default",

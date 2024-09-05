@@ -16,7 +16,7 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                await _unitOfWork.Brand.AddAsync(brand);
+                await _unitOfWork.BrandRepository.AddAsync(brand);
                 await _unitOfWork.SaveAsync();
 
                 return new ResponseData<Brand>
@@ -39,7 +39,7 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                await _unitOfWork.Brand.RemoveAsync(brand);
+                await _unitOfWork.BrandRepository.RemoveAsync(brand);
                 await _unitOfWork.SaveAsync();
                 
                 return new ResponseData<Brand>
@@ -65,7 +65,7 @@ namespace ShoeCatalog.Services
             {
                 return new ResponseData<IEnumerable<Brand>>
                 {
-                    Model = await _unitOfWork.Brand.GetAllAsync(tracked: false),
+                    Model = await _unitOfWork.BrandRepository.GetAllAsync(tracked: false),
                     Message = "Success",
                 };
             
@@ -84,13 +84,13 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                var brand = await _unitOfWork.Brand.GetFirstOrDefaultAsync(x => x.Id == id, tracked: false);
+                var brand = await _unitOfWork.BrandRepository.GetFirstOrDefaultAsync(x => x.Id == id, tracked: false);
                 
                 return new ResponseData<Brand>
                 {
                     Model = brand,
                     Status = (brand != null) ? RequestStatus.Success : RequestStatus.Failed,
-                    Message = (brand != null) ? "Success" : $"Brand with id: {id} was not found."
+                    Message = (brand != null) ? "Success" : $"BrandRepository with id: {id} was not found."
                 };
 
             } catch(Exception ex)
@@ -108,7 +108,7 @@ namespace ShoeCatalog.Services
         {
             try
             {
-                await _unitOfWork.Brand.Update(brand);
+                await _unitOfWork.BrandRepository.Update(brand);
                 await _unitOfWork.SaveAsync();
                 
                 return new ResponseData<Brand>

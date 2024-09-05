@@ -27,10 +27,12 @@ namespace ShoeCatalog.Web.Controllers
             return View(login);
         }
 
-        [HttpPost]
-        public IActionResult Logout()
+        [HttpGet]
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await _userService.SignOut();
+
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
         }
 
         [HttpGet]

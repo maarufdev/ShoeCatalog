@@ -1,0 +1,83 @@
+﻿<link rel="stylesheet" href="~/css/cart/index.css" />
+
+<div class="container d-flex justify-content-between align-items-baseline mt-4 mb-3">
+    <h2>Add Cart Items</h2>
+</div>
+
+<div class="container border shadow p-3">
+    <table class="table table-striped table-responsive" id="cart-table">
+        <thead>
+            <tr>
+                <th class="th-image-col"></th>
+                <th class="th-item-name-col">
+                    <label>Item Name</label>
+                </th>
+                <th class="th-price-col">
+                    <label>Price</label>
+                </th>
+                <th class="th-quantity-col">
+                    <label>Quantity</label>
+                </th>
+                <th class="th-total-col">
+                    <label>Total</label>
+                </th>
+                <th class="th-action-col">
+                    <label>Actions</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="table-cart-body">
+        </tbody>
+    </table>
+
+</div>
+<div class="modal fade"
+     id="modalCart"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="modalCartLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCartLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-target="modalCart" id="model-close-btn"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Item Name</label>
+                    <input class="form-control" disabled id="input-item-name" name="item-name" value="Item Name" tabindex="-1" />
+                </div>
+                <div class="mb-3">
+                    <label>Brand</label>
+                    <input class="form-control" disabled id="input-item-brand" name="item-brand" value="Item Name" tabindex="-1" />
+                </div>
+                <div class="mb-3">
+                    <label>Price</label>
+                    <input class="form-control" disabled type="number" id="input-item-price" name="item-price" tabindex="-1" />
+                </div>
+                <div class="mb-3">
+                    <label>Quantity</label>
+                    <input class="form-control" type="number" id="input-item-quantity" name="item-quantity" tabindex="-1" />
+                </div>
+                <div class="mb-3">
+                    <label>Total</label>
+                    <input class="form-control" disabled type="number" id="input-item-total" name="item-total" tabindex="-1" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary px-3 d-flex gap-2 fw-bold text-uppercase" id="update-cart-item">
+                    <i class="bi bi-floppy-fill"></i>
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="module" src="~/js/cart/index.js" asp-append-version="true"></script>
+}

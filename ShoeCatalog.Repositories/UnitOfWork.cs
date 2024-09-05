@@ -1,5 +1,6 @@
 ﻿using ShoeCatalog.DataModels.Data;
 using ShoeCatalog.DataModels.Models;
+using ShoeCatalog.Domain.Models;
 using ShoeCatalog.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,20 +17,13 @@ namespace ShoeCatalog.Repositories
         public UnitOfWork(ShoeDbContext context)
         {
             _context = context;
-            //Shoe = new GenericRepository<Shoe>(_context);
-            //Category = new GenericRepository<Category>(_context);
-            //Brand = new GenericRepository<Brand>(_context);
-            //ShoeCategory = new GenericRepository<ShoeCategory>(_context);
         }
-
-        //public IGenericRepository<Shoe> Shoe { get; private set; }
-        public IShoeRepository Shoe => new ShoeRepository(_context);
-        //public IGenericRepository<Category> Category { get; private set; }
-        public IGenericRepository<Category> Category => new GenericRepository<Category>(_context);
-        //public IGenericRepository<Brand> Brand { get; private set; }
-        public IGenericRepository<Brand> Brand => new GenericRepository<Brand>(_context);
-        //public IGenericRepository<ShoeCategory> ShoeCategory { get; private set; }
+        public IShoeRepository ShoeRepository => new ShoeRepository(_context);
+        public IGenericRepository<Category> CategoryRepository => new GenericRepository<Category>(_context);
+        public IGenericRepository<Brand> BrandRepository => new GenericRepository<Brand>(_context);
         public IGenericRepository<ShoeCategory> ShoeCategory => new GenericRepository<ShoeCategory>(_context);
+        public IGenericRepository<Cart> CartRepository => new GenericRepository<Cart>(_context);
+        public IOrderRepository OrderRepository => new OrderRepository(_context);
 
         public void Dispose()
         {

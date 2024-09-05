@@ -21,7 +21,7 @@ namespace ShoeCatalog.Services
         }
         public async Task<Shoe> GetShoeByIdAsync(string shoeId)
         {
-            var shoe = await _unitOfWork.Shoe.GetFirstOrDefaultAsync(x => x.Id == shoeId, tracked: false);
+            var shoe = await _unitOfWork.ShoeRepository.GetFirstOrDefaultAsync(x => x.Id == shoeId, tracked: false);
 
             return shoe;
         }
@@ -30,7 +30,7 @@ namespace ShoeCatalog.Services
         {
             List<ShoeListVM> shoeListVM = new();
 
-            var shoes = await _unitOfWork.Shoe.GetAllAsync(includeProperties: "ShoeCategories,Brand", tracked: false);
+            var shoes = await _unitOfWork.ShoeRepository.GetAllAsync(includeProperties: "ShoeCategories,Brand", tracked: false);
 
             if (shoes != null && shoes.Any())
             {
@@ -59,7 +59,7 @@ namespace ShoeCatalog.Services
 
         public async Task<ShoeDetailsVM> GetShoeDetailsByIdAsync(string shoeId)
         {
-            var shoeDetails = await _unitOfWork.Shoe.
+            var shoeDetails = await _unitOfWork.ShoeRepository.
                               GetFirstOrDefaultAsync(
                                     x => x.Id == shoeId,
                                     includeProperties: "Brand,ShoeCategories",
@@ -69,7 +69,7 @@ namespace ShoeCatalog.Services
             var shoeCategories = shoeDetails.ShoeCategories?
                                 .Select(x => x.CategoryId).ToList();
 
-            var selectedCategories = await _unitOfWork.Category
+            var selectedCategories = await _unitOfWork.CategoryRepository
                                     .GetAllAsync(x => shoeCategories!.Contains(x.Id));
 
 
@@ -95,11 +95,11 @@ namespace ShoeCatalog.Services
         {
             List<ShoeCardVM> shoeCards = new();
 
-            var shoes = await _unitOfWork.Shoe.GetAllAsync(includeProperties: "Brand,ShoeCategories");
+            var shoes = await _unitOfWork.ShoeRepository.GetAllAsync(includeProperties: "Brand,ShoeCategories");
 
             if (shoes != null)
             {
-                var categories = await _unitOfWork.Category.GetAllAsync();
+                var categories = await _unitOfWork.CategoryRepository.GetAllAsync();
 
                 shoeCards = shoes.Select(x => new ShoeCardVM
                 {
@@ -124,11 +124,11 @@ namespace ShoeCatalog.Services
 
         public async Task<bool> DeleteShoeById(string shoeId)
         {
-            var shoeToDelete = await _unitOfWork.Shoe.GetFirstOrDefaultAsync(x => x.Id == shoeId, tracked: false);
+            var shoeToDelete = await _unitOfWork.ShoeRepository.GetFirstOrDefaultAsync(x => x.Id == shoeId, tracked: false);
 
             if(shoeToDelete != null)
             {
-                await _unitOfWork.Shoe.RemoveAsync(shoeToDelete);
+                await _unitOfWork.ShoeRepository.RemoveAsync(shoeToDelete);
 
                 return await _unitOfWork.SaveAsync();
             }

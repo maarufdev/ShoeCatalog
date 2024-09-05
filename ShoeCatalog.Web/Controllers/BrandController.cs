@@ -55,7 +55,7 @@ namespace ShoeCatalog.Web.Controllers
         {
             if (string.IsNullOrEmpty(brand.Name))
             {
-                return BadRequest("Brand Name is required.");
+                return BadRequest("BrandRepository Name is required.");
             }
 
             brand.Id = Guid.NewGuid().ToString();
@@ -80,7 +80,7 @@ namespace ShoeCatalog.Web.Controllers
 
             }
 
-            return BadRequest("Brand Id is null");
+            return BadRequest("BrandRepository Id is null");
         }
 
         [HttpDelete]

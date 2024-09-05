@@ -85,24 +85,6 @@ const baseModel = (function () {
         modalCloseButton.on('click', function () {
             cleanProperties();
         })
-
-
-    }
-
-    const apiService = function (url, method, data) {
-        return new Promise(function (resolve, reject) {
-            $.ajax({
-                url: url,
-                method: method,
-                data: data,
-                success: function (response) {
-                    resolve(response)
-                },
-                error: function (xhr, status, error) {
-                    reject(error)
-                }
-            })
-        })
     }
 
     const upsert = async function (data) {
@@ -171,8 +153,6 @@ const baseModel = (function () {
                                 sweetAlertHelper.error("Delete failed.");
                             });
                     }
-
-                    return;
                 })
 
             return;
